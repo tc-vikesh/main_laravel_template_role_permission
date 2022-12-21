@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Installing Repo
+## Installing Repo -
 
 It's ready to use laravel template with auth, registered helper, roles and permission.
 To successfull instalation please follow steps given below :-
