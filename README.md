@@ -11,6 +11,8 @@
 
 It's ready to use laravel template with auth, registered helper, roles and permission.
 To successfull instalation please follow steps given below :-
+- git clone
+- composer update
 - php artisan migrate
 - php artisan permission:create-permission-routes
 - php artisan db:seed
