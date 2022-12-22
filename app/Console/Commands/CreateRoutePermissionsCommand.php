@@ -44,13 +44,13 @@ class CreateRoutePermissionsCommand extends Command
         foreach ($routes as $route) {
             if($route->getName() && in_array('permission', $route->getAction()['middleware'])){
                 // dd($route->getName());
+                $added_permissions[] = $route->getName();
                 $name_parts = explode('.',$route->getName());
                 if($name_parts[0] == 'admin' && array_key_exists(1,$name_parts)){
                     $permission = Permission::where('name', $route->getName())->first();
 
                     if (is_null($permission)) {
                         Permission::create(['name' => $route->getName(), 'group_name' => $name_parts[1]]);
-                        $added_permissions[] = $route->getName();
                     }
                 }
             }
