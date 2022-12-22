@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Guard;
+use Spatie\Permission\Models\Role;
 use DB;
 
 class CreateRoutePermissionsCommand extends Command
@@ -38,8 +39,8 @@ class CreateRoutePermissionsCommand extends Command
 
     public function handle()
     {
-
         $routes = Route::getRoutes()->getRoutes();
+        $added_permissions = [];
         foreach ($routes as $route) {
             if($route->getName() && in_array('permission', $route->getAction()['middleware'])){
                 // dd($route->getName());
@@ -49,10 +50,15 @@ class CreateRoutePermissionsCommand extends Command
 
                     if (is_null($permission)) {
                         Permission::create(['name' => $route->getName(), 'group_name' => $name_parts[1]]);
+                        $added_permissions[] = $route->getName();
                     }
                 }
             }
 
+        }
+        $role = Role::where('name','superadmin')->first();
+        if(!is_null($role)){
+            $role->syncPermissions($added_permissions);
         }
         $this->info('Permission routes added successfully.');
         return Command::SUCCESS;
