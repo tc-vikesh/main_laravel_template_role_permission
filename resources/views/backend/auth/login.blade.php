@@ -11,6 +11,9 @@
             <div class="login-box ptb--100">
                 <form method="POST" action="{{ route('admin.login.submit') }}">
                     @csrf
+                    <div class="text-center">
+                    <img src="{{ asset('backend/assets/images/logo.png') }}" class="responsive" />
+                    </div>
                     <div class="login-form-head">
                         <h4>Sign In</h4>
                         <p>Hello there, Sign in and start managing your Admin Panel</p>

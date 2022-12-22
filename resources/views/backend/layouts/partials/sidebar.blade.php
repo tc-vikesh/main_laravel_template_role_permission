@@ -3,10 +3,13 @@
      $usr = Auth::user();
  @endphp
  <div class="sidebar-menu">
-    <div class="sidebar-header">
+    <div class="sidebar-header  bg-white">
         <div class="logo">
             <a href="{{ route('admin.dashboard') }}">
-                <h2 class="text-white">Admin</h2> 
+                <!-- <h2 class="text-white">Admin</h2>  -->
+                <div class="text-center ">
+                <img src="{{ asset('backend/assets/images/logo.png') }}" class="responsive" />
+                </div>
             </a>
         </div>
     </div>
