@@ -57,7 +57,7 @@ Role List
                                             <a class="btn btn-outline-info btn-xs" href="{{ route('admin.roles.edit', $role->id) }}">Edit</a>
                                         @endif
 
-                                        @if (Auth::user()->can('admin.roles.destroy'))
+                                        @if ($role->name != 'superadmin' && Auth::user()->can('admin.roles.destroy'))
                                             <a class="btn btn-outline-danger btn-xs" href="{{ route('admin.roles.destroy', $role->id) }}"
                                             onclick="event.preventDefault(); document.getElementById('delete-form-{{ $role->id }}').submit();">
                                                 Delete
